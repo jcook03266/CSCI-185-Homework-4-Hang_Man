@@ -1,12 +1,11 @@
 import javax.swing.border.Border;
-import javax.swing.BorderFactory;
-import javax.swing.JScrollPane;  
-import javax.swing.JOptionPane;
+import javax.swing.text.Document;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
+import javax.swing.JTextPane;
 import java.awt.*;  
-import javax.swing.*;  
-import javax.swing.JButton; 
-import javax.swing.JTextArea;
-import javax.swing.JFrame;
+import javax.swing.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -17,6 +16,9 @@ import java.io.File;
  *5/12/20
  *Spring 2020
  *Homework 4: Create Your Own Java GUI Program
+ *This program is a simple recreation of the famous game hang man using Java GUI
+ *The user can save their progress, or start a new game at any time
+ *The fluid UI interface has been designed to offer the most minimalistic feel possible
  **/
 
 public class Hang_Man extends JFrame
@@ -43,7 +45,7 @@ public class Hang_Man extends JFrame
 		//Fonts 
 		Font f1 = new Font("Helvetica",Font.PLAIN, 10);
 		Font f2 = new Font("Helvetica",Font.PLAIN, 15);
-
+		Font f3 = new Font("Helvetica",Font.PLAIN, 20);
 
 		//Color(s)
 		Color white = new Color(255,255,255);
@@ -56,7 +58,7 @@ public class Hang_Man extends JFrame
 		JPanel File_Panel_Expansion = new JPanel();
 		File_Panel_Expansion.setLayout(new GridLayout(4, 1));
 		File_Panel_Expansion.setBounds(50,30,120,120); 
-		File_Panel_Expansion.setBackground(Color.BLACK);
+		File_Panel_Expansion.setBackground(Color.CYAN);
 		File_Panel_Expansion.setBorder(whiteline);
 		File_Panel_Expansion.setVisible(false);
 		//File's Drop Down Menu buttons
@@ -64,48 +66,48 @@ public class Hang_Man extends JFrame
 		//New button
 		JPanel File_Menu_Button_New = new JPanel();
 		File_Menu_Button_New.setLayout(new BorderLayout());
-		File_Menu_Button_New.setBackground(Color.BLACK);
+		File_Menu_Button_New.setBackground(Color.WHITE);
 		JButton File_New = new JButton("New");
 		File_New.setFont(f2);
 		File_New.setHorizontalAlignment(SwingConstants.LEFT);
-		File_New.setBackground(Color.black);
-		File_New.setForeground(Color.WHITE);
+		File_New.setBackground(Color.white);
+		File_New.setForeground(Color.black);
 		File_Menu_Button_New.add(File_New);
 		File_Panel_Expansion.add(File_Menu_Button_New);
 
 		//Save button
 		JPanel File_Menu_Button_Save = new JPanel();
 		File_Menu_Button_Save.setLayout(new BorderLayout());
-		File_Menu_Button_Save.setBackground(Color.BLACK);
+		File_Menu_Button_Save.setBackground(Color.WHITE);
 		JButton File_Save = new JButton("Save");
 		File_Save.setFont(f2);
 		File_Save.setHorizontalAlignment(SwingConstants.LEFT);
-		File_Save.setBackground(Color.black);
-		File_Save.setForeground(Color.WHITE);
+		File_Save.setBackground(Color.white);
+		File_Save.setForeground(Color.black);
 		File_Menu_Button_Save.add(File_Save);
 		File_Panel_Expansion.add(File_Menu_Button_Save);
 
 		//Save As button
 		JPanel File_Menu_Button_Save_As = new JPanel();
 		File_Menu_Button_Save_As.setLayout(new BorderLayout());
-		File_Menu_Button_Save_As.setBackground(Color.BLACK);
+		File_Menu_Button_Save_As.setBackground(Color.WHITE);
 		JButton File_Save_As = new JButton("Save As...");
 		File_Save_As.setFont(f2);
 		File_Save_As.setHorizontalAlignment(SwingConstants.LEFT);
-		File_Save_As.setBackground(Color.black);
-		File_Save_As.setForeground(Color.WHITE);
+		File_Save_As.setBackground(Color.white);
+		File_Save_As.setForeground(Color.black);
 		File_Menu_Button_Save_As.add(File_Save_As);
 		File_Panel_Expansion.add(File_Menu_Button_Save_As);
 
 		//Exit button
 		JPanel File_Menu_Button_Exit = new JPanel();
 		File_Menu_Button_Exit.setLayout(new BorderLayout());
-		File_Menu_Button_Exit.setBackground(Color.BLACK);
+		File_Menu_Button_Exit.setBackground(Color.WHITE);
 		JButton File_Exit = new JButton("Exit");
 		File_Exit.setFont(f2);
 		File_Exit.setHorizontalAlignment(SwingConstants.LEFT);
-		File_Exit.setBackground(Color.black);
-		File_Exit.setForeground(Color.WHITE);
+		File_Exit.setBackground(Color.white);
+		File_Exit.setForeground(Color.black);
 		File_Menu_Button_Exit.add(File_Exit);
 		File_Panel_Expansion.add(File_Menu_Button_Exit);
 		f.add(File_Panel_Expansion);
@@ -328,17 +330,366 @@ public class Hang_Man extends JFrame
 		Page_Footer2.setBorder(blackline);
 		Page_Footer2.setBackground(Color.DARK_GRAY);
 		f.add(Page_Footer2);
-
+		//Keyboard Key Buttons [Placed inside of Page_Footer_subset2]
+		//A Button
+		JPanel a_Panel = new JPanel();
+		a_Panel.setLayout(new BorderLayout());
+		a_Panel.setBackground(Color.BLACK);
+		JButton a_Button = new JButton("A");
+		a_Button.setFont(f2);
+		a_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		a_Button.setBackground(Color.white);
+		a_Button.setForeground(Color.BLACK);
+		a_Panel.add(a_Button);
+		//B Button
+		JPanel b_Panel = new JPanel();
+		b_Panel.setLayout(new BorderLayout());
+		b_Panel.setBackground(Color.BLACK);
+		JButton b_Button = new JButton("B");
+		b_Button.setFont(f2);
+		b_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		b_Button.setBackground(Color.white);
+		b_Button.setForeground(Color.BLACK);
+		b_Panel.add(b_Button);
+		//C Button
+		JPanel c_Panel = new JPanel();
+		c_Panel.setLayout(new BorderLayout());
+		c_Panel.setBackground(Color.BLACK);
+		JButton c_Button = new JButton("C");
+		c_Button.setFont(f2);
+		c_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		c_Button.setBackground(Color.white);
+		c_Button.setForeground(Color.BLACK);
+		c_Panel.add(c_Button);
+		//D Button
+		JPanel d_Panel = new JPanel();
+		d_Panel.setLayout(new BorderLayout());
+		d_Panel.setBackground(Color.BLACK);
+		JButton d_Button = new JButton("D");
+		d_Button.setFont(f2);
+		d_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		d_Button.setBackground(Color.white);
+		d_Button.setForeground(Color.BLACK);
+		d_Panel.add(d_Button);
+		//E Button
+		JPanel e_Panel = new JPanel();
+		e_Panel.setLayout(new BorderLayout());
+		e_Panel.setBackground(Color.BLACK);
+		JButton e_Button = new JButton("E");
+		e_Button.setFont(f2);
+		e_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		e_Button.setBackground(Color.white);
+		e_Button.setForeground(Color.BLACK);
+		e_Panel.add(e_Button);
+		//F Button
+		JPanel f_Panel = new JPanel();
+		f_Panel.setLayout(new BorderLayout());
+		f_Panel.setBackground(Color.BLACK);
+		JButton f_Button = new JButton("F");
+		f_Button.setFont(f2);
+		f_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		f_Button.setBackground(Color.white);
+		f_Button.setForeground(Color.BLACK);
+		f_Panel.add(f_Button);
+		//G Button
+		JPanel g_Panel = new JPanel();
+		g_Panel.setLayout(new BorderLayout());
+		g_Panel.setBackground(Color.BLACK);
+		JButton g_Button = new JButton("G");
+		g_Button.setFont(f2);
+		g_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		g_Button.setBackground(Color.white);
+		g_Button.setForeground(Color.BLACK);
+		g_Panel.add(g_Button);
+		//H Button
+		JPanel h_Panel = new JPanel();
+		h_Panel.setLayout(new BorderLayout());
+		h_Panel.setBackground(Color.BLACK);
+		JButton h_Button = new JButton("H");
+		h_Button.setFont(f2);
+		h_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		h_Button.setBackground(Color.white);
+		h_Button.setForeground(Color.BLACK);
+		h_Panel.add(h_Button);
+		//I Button
+		JPanel i_Panel = new JPanel();
+		i_Panel.setLayout(new BorderLayout());
+		i_Panel.setBackground(Color.BLACK);
+		JButton i_Button = new JButton("I");
+		i_Button.setFont(f2);
+		i_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		i_Button.setBackground(Color.white);
+		i_Button.setForeground(Color.BLACK);
+		i_Panel.add(i_Button);
+		//J Button
+		JPanel j_Panel = new JPanel();
+		j_Panel.setLayout(new BorderLayout());
+		j_Panel.setBackground(Color.BLACK);
+		JButton j_Button = new JButton("J");
+		j_Button.setFont(f2);
+		j_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		j_Button.setBackground(Color.white);
+		j_Button.setForeground(Color.BLACK);
+		j_Panel.add(j_Button);
+		//K Button
+		JPanel k_Panel = new JPanel();
+		k_Panel.setLayout(new BorderLayout());
+		k_Panel.setBackground(Color.BLACK);
+		JButton k_Button = new JButton("K");
+		k_Button.setFont(f2);
+		k_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		k_Button.setBackground(Color.white);
+		k_Button.setForeground(Color.BLACK);
+		k_Panel.add(k_Button);
+		//L Button
+		JPanel l_Panel = new JPanel();
+		l_Panel.setLayout(new BorderLayout());
+		l_Panel.setBackground(Color.BLACK);
+		JButton l_Button = new JButton("L");
+		l_Button.setFont(f2);
+		l_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		l_Button.setBackground(Color.white);
+		l_Button.setForeground(Color.BLACK);
+		l_Panel.add(l_Button);
+		//M Button
+		JPanel m_Panel = new JPanel();
+		m_Panel.setLayout(new BorderLayout());
+		m_Panel.setBackground(Color.BLACK);
+		JButton m_Button = new JButton("M");
+		m_Button.setFont(f2);
+		m_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		m_Button.setBackground(Color.white);
+		m_Button.setForeground(Color.BLACK);
+		m_Panel.add(m_Button);
+		//N Button
+		JPanel n_Panel = new JPanel();
+		n_Panel.setLayout(new BorderLayout());
+		n_Panel.setBackground(Color.BLACK);
+		JButton n_Button = new JButton("N");
+		n_Button.setFont(f2);
+		n_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		n_Button.setBackground(Color.white);
+		n_Button.setForeground(Color.BLACK);
+		n_Panel.add(n_Button);
+		//O Button
+		JPanel o_Panel = new JPanel();
+		o_Panel.setLayout(new BorderLayout());
+		o_Panel.setBackground(Color.BLACK);
+		JButton o_Button = new JButton("O");
+		o_Button.setFont(f2);
+		o_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		o_Button.setBackground(Color.white);
+		o_Button.setForeground(Color.BLACK);
+		o_Panel.add(o_Button);
+		//P Button
+		JPanel p_Panel = new JPanel();
+		p_Panel.setLayout(new BorderLayout());
+		p_Panel.setBackground(Color.BLACK);
+		JButton p_Button = new JButton("P");
+		p_Button.setFont(f2);
+		p_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		p_Button.setBackground(Color.white);
+		p_Button.setForeground(Color.BLACK);
+		p_Panel.add(p_Button);
+		//Q Button
+		JPanel q_Panel = new JPanel();
+		q_Panel.setLayout(new BorderLayout());
+		q_Panel.setBackground(Color.BLACK);
+		JButton q_Button = new JButton("Q");
+		q_Button.setFont(f2);
+		q_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		q_Button.setBackground(Color.white);
+		q_Button.setForeground(Color.BLACK);
+		q_Panel.add(q_Button);
+		//R Button
+		JPanel r_Panel = new JPanel();
+		r_Panel.setLayout(new BorderLayout());
+		r_Panel.setBackground(Color.BLACK);
+		JButton r_Button = new JButton("R");
+		r_Button.setFont(f2);
+		r_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		r_Button.setBackground(Color.white);
+		r_Button.setForeground(Color.BLACK);
+		r_Panel.add(r_Button);
+		//S Button
+		JPanel s_Panel = new JPanel();
+		s_Panel.setLayout(new BorderLayout());
+		s_Panel.setBackground(Color.BLACK);
+		JButton s_Button = new JButton("S");
+		s_Button.setFont(f2);
+		s_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		s_Button.setBackground(Color.white);
+		s_Button.setForeground(Color.BLACK);
+		s_Panel.add(s_Button);
+		//T Button
+		JPanel t_Panel = new JPanel();
+		t_Panel.setLayout(new BorderLayout());
+		t_Panel.setBackground(Color.BLACK);
+		JButton t_Button = new JButton("T");
+		t_Button.setFont(f2);
+		t_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		t_Button.setBackground(Color.white);
+		t_Button.setForeground(Color.BLACK);
+		t_Panel.add(t_Button);
+		//U Button
+		JPanel u_Panel = new JPanel();
+		u_Panel.setLayout(new BorderLayout());
+		u_Panel.setBackground(Color.BLACK);
+		JButton u_Button = new JButton("U");
+		u_Button.setFont(f2);
+		u_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		u_Button.setBackground(Color.white);
+		u_Button.setForeground(Color.BLACK);
+		u_Panel.add(u_Button);
+		//V Button
+		JPanel v_Panel = new JPanel();
+		v_Panel.setLayout(new BorderLayout());
+		v_Panel.setBackground(Color.BLACK);
+		JButton v_Button = new JButton("V");
+		v_Button.setFont(f2);
+		v_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		v_Button.setBackground(Color.white);
+		v_Button.setForeground(Color.BLACK);
+		v_Panel.add(v_Button);
+		//W Button
+		JPanel w_Panel = new JPanel();
+		w_Panel.setLayout(new BorderLayout());
+		w_Panel.setBackground(Color.BLACK);
+		JButton w_Button = new JButton("W");
+		w_Button.setFont(f2);
+		w_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		w_Button.setBackground(Color.white);
+		w_Button.setForeground(Color.BLACK);
+		w_Panel.add(w_Button);
+		//X Button
+		JPanel x_Panel = new JPanel();
+		x_Panel.setLayout(new BorderLayout());
+		x_Panel.setBackground(Color.BLACK);
+		JButton x_Button = new JButton("X");
+		x_Button.setFont(f2);
+		x_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		x_Button.setBackground(Color.white);
+		x_Button.setForeground(Color.BLACK);
+		x_Panel.add(x_Button);
+		//Y Button
+		JPanel y_Panel = new JPanel();
+		y_Panel.setLayout(new BorderLayout());
+		y_Panel.setBackground(Color.BLACK);
+		JButton y_Button = new JButton("Y");
+		y_Button.setFont(f2);
+		y_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		y_Button.setBackground(Color.white);
+		y_Button.setForeground(Color.BLACK);
+		y_Panel.add(y_Button);
+		//Z Button
+		JPanel z_Panel = new JPanel();
+		z_Panel.setLayout(new BorderLayout());
+		z_Panel.setBackground(Color.BLACK);
+		JButton z_Button = new JButton("Z");
+		z_Button.setFont(f2);
+		z_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		z_Button.setBackground(Color.white);
+		z_Button.setForeground(Color.BLACK);
+		z_Panel.add(z_Button);
+		//Hint Button
+		JPanel Hint_Panel = new JPanel();
+		Hint_Panel.setLayout(new BorderLayout());
+		Hint_Panel.setBackground(Color.BLACK);
+		JButton Hint_Button = new JButton("Hint");
+		Hint_Button.setFont(f2);
+		Hint_Button.setHorizontalAlignment(SwingConstants.CENTER);
+		Hint_Button.setBackground(Color.white);
+		Hint_Button.setForeground(Color.BLACK);
+		Hint_Panel.add(Hint_Button);
+		//End of Key Buttons
 		//Keyboard Panels////////////////////////////////////////////////////////////////////////////////////////////
-		//Game keyboard Area Padding [Inside];
+		//Game Word Entry Box [Inside]
+		JPanel word_entry_box_Textfield= new JPanel();
+		word_entry_box_Textfield.setLayout(new BorderLayout());
+		word_entry_box_Textfield.setBounds(200,645,680,30); 
+		word_entry_box_Textfield.setBorder(whiteline);
+		word_entry_box_Textfield.setBackground(Color.WHITE);
+		word_entry_box_Textfield.setVisible(false);
+		f.add(word_entry_box_Textfield);
+
+		JTextPane word_entry_Box = new JTextPane();  
+		SimpleAttributeSet center = new SimpleAttributeSet();
+		word_entry_Box.setCharacterAttributes(center, true);
+		StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
+		word_entry_Box.setText("_ _ _ _ _ _ _ _ _ _ _ _");  
+		StyledDocument word_entry_Doc = word_entry_Box.getStyledDocument(); 
+		word_entry_Doc.setParagraphAttributes(0, word_entry_Doc.getLength(), center, false);
+		word_entry_box_Textfield.add(word_entry_Box);
+		word_entry_Box.setFont(f3);
+		word_entry_Box.setEditable(false);
+
+		//Game Word Entry Box [Inside]
+		JPanel word_entry_box_Inside= new JPanel();
+		word_entry_box_Inside.setLayout(new BorderLayout());
+		word_entry_box_Inside.setBounds(190,640,700,40); 
+		word_entry_box_Inside.setBorder(blackline);
+		word_entry_box_Inside.setBackground(Color.WHITE);
+		word_entry_box_Inside.setVisible(false);
+		f.add(word_entry_box_Inside);
+
+		//Game Word Entry Box [Middle]
+		JPanel word_entry_box_Middle= new JPanel();
+		word_entry_box_Middle.setLayout(new BorderLayout());
+		word_entry_box_Middle.setBounds(180,630,720,60); 
+		word_entry_box_Middle.setBorder(blackline);
+		word_entry_box_Middle.setBackground(Color.CYAN);
+		word_entry_box_Middle.setVisible(false);
+		f.add(word_entry_box_Middle);
+
+		//Game Word Entry Box [outside]
+		JPanel word_entry_box_Outside= new JPanel();
+		word_entry_box_Outside.setLayout(new BorderLayout());
+		word_entry_box_Outside.setBounds(170,620,740,80); 
+		word_entry_box_Outside.setBorder(blackline);
+		word_entry_box_Outside.setBackground(Color.DARK_GRAY);
+		word_entry_box_Outside.setVisible(false);
+		f.add(word_entry_box_Outside);
+		//End 
+
+		//Game keyboard Area Padding [Inside]
 		JPanel Page_Footer_subset2 = new JPanel();
-		Page_Footer_subset2.setLayout(new BorderLayout());
+		Page_Footer_subset2.setLayout(new GridLayout(3, 10));
 		Page_Footer_subset2.setBounds(70,730,940,230); 
 		Page_Footer_subset2.setBorder(blackline);
-		Page_Footer_subset2.setBackground(Color.DARK_GRAY);
+		Page_Footer_subset2.setBackground(Color.WHITE);
 		Page_Footer_subset2.setVisible(false);
+
+		Page_Footer_subset2.add(a_Panel);
+		Page_Footer_subset2.add(b_Panel);
+		Page_Footer_subset2.add(c_Panel);
+		Page_Footer_subset2.add(d_Panel);
+		Page_Footer_subset2.add(e_Panel);
+		Page_Footer_subset2.add(f_Panel);
+		Page_Footer_subset2.add(g_Panel);
+		Page_Footer_subset2.add(h_Panel);
+		Page_Footer_subset2.add(i_Panel);
+		Page_Footer_subset2.add(j_Panel);
+		Page_Footer_subset2.add(k_Panel);
+		Page_Footer_subset2.add(l_Panel);
+		Page_Footer_subset2.add(m_Panel);
+		Page_Footer_subset2.add(n_Panel);
+		Page_Footer_subset2.add(o_Panel);
+		Page_Footer_subset2.add(p_Panel);
+		Page_Footer_subset2.add(q_Panel);
+		Page_Footer_subset2.add(r_Panel);
+		Page_Footer_subset2.add(s_Panel);
+		Page_Footer_subset2.add(t_Panel);
+		Page_Footer_subset2.add(u_Panel);
+		Page_Footer_subset2.add(v_Panel);
+		Page_Footer_subset2.add(w_Panel);
+		Page_Footer_subset2.add(x_Panel);
+		Page_Footer_subset2.add(y_Panel);
+		Page_Footer_subset2.add(z_Panel);
+		Page_Footer_subset2.add(Hint_Panel);
+
 		f.add(Page_Footer_subset2);
-		//Game keyboard Area Padding [Middle];
+		//Game keyboard Area Padding [Middle]
+
 		JPanel Page_Footer_subset1 = new JPanel();
 		Page_Footer_subset1.setLayout(new BorderLayout());
 		Page_Footer_subset1.setBounds(60,720,960,250); 
@@ -346,7 +697,7 @@ public class Hang_Man extends JFrame
 		Page_Footer_subset1.setBackground(Color.CYAN);
 		Page_Footer_subset1.setVisible(false);
 		f.add(Page_Footer_subset1);
-		//Game keyboard Area Padding [out_side];
+		//Game keyboard Area Padding [out_side]
 		JPanel Page_Footer1 = new JPanel();
 		Page_Footer1.setLayout(new BorderLayout());
 		Page_Footer1.setBounds(50,700,980,500); 
@@ -363,8 +714,8 @@ public class Hang_Man extends JFrame
 		Page_Header1_Help_Button.setBackground(Color.GRAY);
 		JButton Help = new JButton("Help");
 		Help.setFont(f2);
-		Help.setBackground(Color.black);
-		Help.setForeground(Color.WHITE);
+		Help.setBackground(Color.cyan);
+		Help.setForeground(Color.BLACK);
 		Page_Header1_Help_Button.add(Help);
 		f.add(Page_Header1_Help_Button);
 
@@ -375,18 +726,10 @@ public class Hang_Man extends JFrame
 		Page_Header1_File_Button.setBackground(Color.GRAY);
 		JButton File = new JButton("File");
 		File.setFont(f2);
-		File.setBackground(Color.black);
-		File.setForeground(Color.WHITE);
+		File.setBackground(Color.cyan);
+		File.setForeground(Color.BLACK);
 		Page_Header1_File_Button.add(File);
 		f.add(Page_Header1_File_Button);        
-
-		//Page Header 1 subset  
-		JPanel Page_Header1_subset = new JPanel();
-		Page_Header1_subset.setLayout(new BorderLayout());
-		Page_Header1_subset.setBounds(500,10,530,20); 
-		Page_Header1_subset.setBorder(blackline);
-		Page_Header1_subset.setBackground(Color.BLACK);
-		f.add(Page_Header1_subset);
 
 		//Page Header 1  
 		JPanel Page_Header1 = new JPanel();
@@ -452,6 +795,10 @@ public class Hang_Man extends JFrame
 				Page_Footer_subset2.setVisible(true);
 				Page_Footer_subset1.setVisible(true);
 				Page_Footer1.setVisible(true);
+				word_entry_box_Textfield.setVisible(true);
+				word_entry_box_Inside.setVisible(true);
+				word_entry_box_Middle.setVisible(true);
+				word_entry_box_Outside.setVisible(true);
 				Begin_Panel_Button.setVisible(false);
 
 				Graphics g = Canvas1.getGraphics(); 
@@ -526,6 +873,117 @@ public class Hang_Man extends JFrame
 
 		});
 		//end of Help Button Action Listener 
+
+		//Keyboard action listeners 
+		a_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		b_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		c_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		d_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		e_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		f_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		g_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		h_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		i_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		j_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		k_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		l_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		m_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		n_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		o_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		p_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		q_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		r_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		s_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		t_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		u_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		v_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		w_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		x_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		y_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		z_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		Hint_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		//End of Keyboard action listeners 
 
 
 		//Frame event listeners, general precautions for the user
