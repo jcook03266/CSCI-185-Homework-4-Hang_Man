@@ -1,4 +1,3 @@
-package NotAPhotoShopCopy;
 import javax.swing.border.Border;
 import javax.swing.BorderFactory;
 import javax.swing.JScrollPane;  
