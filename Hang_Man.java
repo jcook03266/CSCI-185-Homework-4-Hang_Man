@@ -781,7 +781,7 @@ public class Hang_Man extends JFrame
 		//end of Panels
 
 		//our frame specifications 
-		f.setTitle("LD");//Adds title header that appears at the top of the page
+		f.setTitle("Hang_Man");//Adds title header that appears at the top of the page
 		f.setSize(1280,1020);//setting the default size of our window to 270 (H) pixels by 260 (V)
 		f.setResizable(false);//Makes it impossible to resize the window, for styling purposes and uniformity of the program in its current state
 		f.setVisible(true);//making the window visible to the use
