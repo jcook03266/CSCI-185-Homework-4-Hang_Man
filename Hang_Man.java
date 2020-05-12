@@ -11,11 +11,6 @@ import javax.swing.JFrame;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import javax.imageio.ImageIO;
-import javax.swing.JSlider;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
-import java.util.Hashtable;
 
 /*Written by Justin, Brenno, Afaq
  *CSCI 185 M06
