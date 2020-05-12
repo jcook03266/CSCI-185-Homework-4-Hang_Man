@@ -27,19 +27,8 @@ public class Hang_Man extends JFrame
 
 	JFrame f; //setting our JFrame variable
 	JOptionPane pane = new JOptionPane();//creating a new pane
-	private int canvas_size_percentage = 100;//canvas zoom percentage, will be utilized later on 
 	private String save_name = null;//save name, to be determined by the user 
 	private int press_amount = 0;//Press amount of the top drop down menu buttons, prevents multiple menus from being open at once
-	private int index = 0;//index for the line drawing process
-	private Point[] arr = new Point[1000000];//stored points for drawing, the limit is very high but will never be reached realistically speaking 
-	private BufferedImage im;//buffered image variable, will be used to save our masterpiece later on
-	private Graphics2D h;//2D graphics variables assigned to the created graphic of the buffered image object 
-	private boolean Pen_Tool = true;//the default tool the user will be using, small compact, reliable
-	private boolean Marker_Tool = false;//secondary pen tool the user has access to, much larger, and less uniform as a result
-	private boolean Eraser_Tool = false;//Erases the mistakes of the pass, used in place of an undo button for now
-	private Color pen_color = Color.black;//the default color of the pen 
-	private int brush_size_unit = 5;//the default size of the pen
-	private int eraser_size_unit = 50;//the default size of the eraser pen 
 	//end of instance variable declarations 
 
 	public Hang_Man(){
