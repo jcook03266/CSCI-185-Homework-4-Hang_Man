@@ -11,7 +11,7 @@ public class Hangman {
     private String[] guessWord;
     private String guess;
     private int guessAmount;
-    private int currentRound;
+    private final int guessLimit = 9;
     private boolean hasWon;
 
     public Hangman(String gameWord) {
@@ -22,7 +22,6 @@ public class Hangman {
         }
         this.guess = "";
         this.guessAmount = 0;
-        this.currentRound = 1;
         hasWon = false;
     }
 
@@ -30,7 +29,6 @@ public class Hangman {
         this.gameWord = "";
         this.guess = "";
         this.guessAmount = 0;
-        this.currentRound = 1;
         hasWon = false;
     }
 
@@ -51,6 +49,7 @@ public class Hangman {
     }
 
     public boolean getWinState() { return hasWon; }
+    public boolean hasReachedLimit() { return guessAmount == guessLimit; }
 
     public boolean guess(String currentGuess) {
         this.guess = currentGuess.toLowerCase();
@@ -58,7 +57,7 @@ public class Hangman {
         if (gameWord.contains(guess)) {
             ArrayList<Integer> indexes = new ArrayList<>();
             int index = 0;
-            while(index != -1){
+            while (index != -1) {
                 index = gameWord.indexOf(guess, index);
                 if (index != -1) {
                     indexes.add(index);
@@ -88,6 +87,5 @@ public class Hangman {
         this.setGuessWord();
         this.guess = "";
         this.guessAmount = 0;
-        this.currentRound = 1;
     }
 }

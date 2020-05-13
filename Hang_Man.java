@@ -925,7 +925,7 @@ public class Hang_Man extends JFrame
 							word_entry_Box.setText(word_entry_Box.getText() + s + " ");
 						}
 						if (game.getWinState()) {
-							JOptionPane.showMessageDialog(null, "The game has ended. Thank you for playing!");
+							JOptionPane.showMessageDialog(null, "The game has ended. You Won! Thank you for playing!");
 							int option = JOptionPane.showConfirmDialog(null, "Would you like to play again?");
 							if (option == JOptionPane.YES_OPTION) {
 								int choice = (int)(Math.random() * ((words.length) + 1));
@@ -937,6 +937,20 @@ public class Hang_Man extends JFrame
 							} else {
 								System.exit(0);
 							}
+						}
+					}
+					if (game.hasReachedLimit()) {
+						JOptionPane.showMessageDialog(null, "The game has ended. You Lost. Thank you for playing!");
+						int option = JOptionPane.showConfirmDialog(null, "Would you like to play again?");
+						if (option == JOptionPane.YES_OPTION) {
+							int choice = (int)(Math.random() * ((words.length) + 1));
+							game.reset(words[choice]);
+							word_entry_Box.setText("");
+							for (String s : game.getGuessWord()) {
+								word_entry_Box.setText(word_entry_Box.getText() + s + " ");
+							}
+						} else {
+							System.exit(0);
 						}
 					}
 				}
