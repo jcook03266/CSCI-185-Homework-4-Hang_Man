@@ -37,6 +37,7 @@ public class Hang_Man extends JFrame
 	public Hang_Man(){
 		// List of words.
 		String[] words = {"Banana", "Fox", "Rabbit", "Dog", "Cat", "Hell", "Heaven"};
+		String[] hints = {"Yellow Fruit", "Rhymes with Fox", "White Fluffy Animal", "Mans Best Friend", "Garfield", "The Devil lives", "Some people believe in it, some people don't."};
 		int choice = (int)(Math.random() * ((words.length - 1) + 1));
 		game.setGameWord(words[choice]);
 		game.setGuessWord();
