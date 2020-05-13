@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.util.ArrayList;
 
 /*Written by Justin, Brenno, Afaq
  *CSCI 185 M06
@@ -22,18 +23,23 @@ import java.io.File;
  **/
 
 public class Hang_Man extends JFrame
-{ /**
- * 
- */
+{
 	private static final long serialVersionUID = 1L;
 
 	JFrame f; //setting our JFrame variable
 	JOptionPane pane = new JOptionPane();//creating a new pane
 	private String save_name = null;//save name, to be determined by the user 
 	private int press_amount = 0;//Press amount of the top drop down menu buttons, prevents multiple menus from being open at once
-	//end of instance variable declarations 
+	//end of instance variable declarations
+
+	private Hangman game = new Hangman();
 
 	public Hang_Man(){
+		// List of words.
+		String[] words = {"Banana", "Fox", "Rabbit", "Dog", "Cat", "Hell", "Heaven"};
+		int choice = (int)(Math.random() * ((words.length - 1) + 1));
+		game.setGameWord(words[choice]);
+		game.setGuessWord();
 		//New frame is enumerated 
 		f = new JFrame();
 
@@ -331,6 +337,9 @@ public class Hang_Man extends JFrame
 		Page_Footer2.setBackground(Color.DARK_GRAY);
 		f.add(Page_Footer2);
 		//Keyboard Key Buttons [Placed inside of Page_Footer_subset2]
+
+		ArrayList<JButton> buttons = new ArrayList<>();
+
 		//A Button
 		JPanel a_Panel = new JPanel();
 		a_Panel.setLayout(new BorderLayout());
@@ -341,6 +350,7 @@ public class Hang_Man extends JFrame
 		a_Button.setBackground(Color.white);
 		a_Button.setForeground(Color.BLACK);
 		a_Panel.add(a_Button);
+		buttons.add(a_Button);
 		//B Button
 		JPanel b_Panel = new JPanel();
 		b_Panel.setLayout(new BorderLayout());
@@ -351,6 +361,7 @@ public class Hang_Man extends JFrame
 		b_Button.setBackground(Color.white);
 		b_Button.setForeground(Color.BLACK);
 		b_Panel.add(b_Button);
+		buttons.add(b_Button);
 		//C Button
 		JPanel c_Panel = new JPanel();
 		c_Panel.setLayout(new BorderLayout());
@@ -361,6 +372,7 @@ public class Hang_Man extends JFrame
 		c_Button.setBackground(Color.white);
 		c_Button.setForeground(Color.BLACK);
 		c_Panel.add(c_Button);
+		buttons.add(c_Button);
 		//D Button
 		JPanel d_Panel = new JPanel();
 		d_Panel.setLayout(new BorderLayout());
@@ -371,6 +383,7 @@ public class Hang_Man extends JFrame
 		d_Button.setBackground(Color.white);
 		d_Button.setForeground(Color.BLACK);
 		d_Panel.add(d_Button);
+		buttons.add(d_Button);
 		//E Button
 		JPanel e_Panel = new JPanel();
 		e_Panel.setLayout(new BorderLayout());
@@ -381,6 +394,7 @@ public class Hang_Man extends JFrame
 		e_Button.setBackground(Color.white);
 		e_Button.setForeground(Color.BLACK);
 		e_Panel.add(e_Button);
+		buttons.add(e_Button);
 		//F Button
 		JPanel f_Panel = new JPanel();
 		f_Panel.setLayout(new BorderLayout());
@@ -391,6 +405,7 @@ public class Hang_Man extends JFrame
 		f_Button.setBackground(Color.white);
 		f_Button.setForeground(Color.BLACK);
 		f_Panel.add(f_Button);
+		buttons.add(f_Button);
 		//G Button
 		JPanel g_Panel = new JPanel();
 		g_Panel.setLayout(new BorderLayout());
@@ -401,6 +416,7 @@ public class Hang_Man extends JFrame
 		g_Button.setBackground(Color.white);
 		g_Button.setForeground(Color.BLACK);
 		g_Panel.add(g_Button);
+		buttons.add(g_Button);
 		//H Button
 		JPanel h_Panel = new JPanel();
 		h_Panel.setLayout(new BorderLayout());
@@ -411,6 +427,7 @@ public class Hang_Man extends JFrame
 		h_Button.setBackground(Color.white);
 		h_Button.setForeground(Color.BLACK);
 		h_Panel.add(h_Button);
+		buttons.add(h_Button);
 		//I Button
 		JPanel i_Panel = new JPanel();
 		i_Panel.setLayout(new BorderLayout());
@@ -421,6 +438,7 @@ public class Hang_Man extends JFrame
 		i_Button.setBackground(Color.white);
 		i_Button.setForeground(Color.BLACK);
 		i_Panel.add(i_Button);
+		buttons.add(i_Button);
 		//J Button
 		JPanel j_Panel = new JPanel();
 		j_Panel.setLayout(new BorderLayout());
@@ -431,6 +449,7 @@ public class Hang_Man extends JFrame
 		j_Button.setBackground(Color.white);
 		j_Button.setForeground(Color.BLACK);
 		j_Panel.add(j_Button);
+		buttons.add(j_Button);
 		//K Button
 		JPanel k_Panel = new JPanel();
 		k_Panel.setLayout(new BorderLayout());
@@ -441,6 +460,7 @@ public class Hang_Man extends JFrame
 		k_Button.setBackground(Color.white);
 		k_Button.setForeground(Color.BLACK);
 		k_Panel.add(k_Button);
+		buttons.add(k_Button);
 		//L Button
 		JPanel l_Panel = new JPanel();
 		l_Panel.setLayout(new BorderLayout());
@@ -451,6 +471,7 @@ public class Hang_Man extends JFrame
 		l_Button.setBackground(Color.white);
 		l_Button.setForeground(Color.BLACK);
 		l_Panel.add(l_Button);
+		buttons.add(l_Button);
 		//M Button
 		JPanel m_Panel = new JPanel();
 		m_Panel.setLayout(new BorderLayout());
@@ -461,6 +482,7 @@ public class Hang_Man extends JFrame
 		m_Button.setBackground(Color.white);
 		m_Button.setForeground(Color.BLACK);
 		m_Panel.add(m_Button);
+		buttons.add(m_Button);
 		//N Button
 		JPanel n_Panel = new JPanel();
 		n_Panel.setLayout(new BorderLayout());
@@ -471,6 +493,7 @@ public class Hang_Man extends JFrame
 		n_Button.setBackground(Color.white);
 		n_Button.setForeground(Color.BLACK);
 		n_Panel.add(n_Button);
+		buttons.add(n_Button);
 		//O Button
 		JPanel o_Panel = new JPanel();
 		o_Panel.setLayout(new BorderLayout());
@@ -481,6 +504,7 @@ public class Hang_Man extends JFrame
 		o_Button.setBackground(Color.white);
 		o_Button.setForeground(Color.BLACK);
 		o_Panel.add(o_Button);
+		buttons.add(o_Button);
 		//P Button
 		JPanel p_Panel = new JPanel();
 		p_Panel.setLayout(new BorderLayout());
@@ -491,6 +515,7 @@ public class Hang_Man extends JFrame
 		p_Button.setBackground(Color.white);
 		p_Button.setForeground(Color.BLACK);
 		p_Panel.add(p_Button);
+		buttons.add(p_Button);
 		//Q Button
 		JPanel q_Panel = new JPanel();
 		q_Panel.setLayout(new BorderLayout());
@@ -501,6 +526,7 @@ public class Hang_Man extends JFrame
 		q_Button.setBackground(Color.white);
 		q_Button.setForeground(Color.BLACK);
 		q_Panel.add(q_Button);
+		buttons.add(q_Button);
 		//R Button
 		JPanel r_Panel = new JPanel();
 		r_Panel.setLayout(new BorderLayout());
@@ -511,6 +537,7 @@ public class Hang_Man extends JFrame
 		r_Button.setBackground(Color.white);
 		r_Button.setForeground(Color.BLACK);
 		r_Panel.add(r_Button);
+		buttons.add(r_Button);
 		//S Button
 		JPanel s_Panel = new JPanel();
 		s_Panel.setLayout(new BorderLayout());
@@ -521,6 +548,7 @@ public class Hang_Man extends JFrame
 		s_Button.setBackground(Color.white);
 		s_Button.setForeground(Color.BLACK);
 		s_Panel.add(s_Button);
+		buttons.add(s_Button);
 		//T Button
 		JPanel t_Panel = new JPanel();
 		t_Panel.setLayout(new BorderLayout());
@@ -531,6 +559,7 @@ public class Hang_Man extends JFrame
 		t_Button.setBackground(Color.white);
 		t_Button.setForeground(Color.BLACK);
 		t_Panel.add(t_Button);
+		buttons.add(t_Button);
 		//U Button
 		JPanel u_Panel = new JPanel();
 		u_Panel.setLayout(new BorderLayout());
@@ -541,6 +570,7 @@ public class Hang_Man extends JFrame
 		u_Button.setBackground(Color.white);
 		u_Button.setForeground(Color.BLACK);
 		u_Panel.add(u_Button);
+		buttons.add(u_Button);
 		//V Button
 		JPanel v_Panel = new JPanel();
 		v_Panel.setLayout(new BorderLayout());
@@ -551,6 +581,7 @@ public class Hang_Man extends JFrame
 		v_Button.setBackground(Color.white);
 		v_Button.setForeground(Color.BLACK);
 		v_Panel.add(v_Button);
+		buttons.add(v_Button);
 		//W Button
 		JPanel w_Panel = new JPanel();
 		w_Panel.setLayout(new BorderLayout());
@@ -561,6 +592,7 @@ public class Hang_Man extends JFrame
 		w_Button.setBackground(Color.white);
 		w_Button.setForeground(Color.BLACK);
 		w_Panel.add(w_Button);
+		buttons.add(w_Button);
 		//X Button
 		JPanel x_Panel = new JPanel();
 		x_Panel.setLayout(new BorderLayout());
@@ -571,6 +603,7 @@ public class Hang_Man extends JFrame
 		x_Button.setBackground(Color.white);
 		x_Button.setForeground(Color.BLACK);
 		x_Panel.add(x_Button);
+		buttons.add(x_Button);
 		//Y Button
 		JPanel y_Panel = new JPanel();
 		y_Panel.setLayout(new BorderLayout());
@@ -581,6 +614,7 @@ public class Hang_Man extends JFrame
 		y_Button.setBackground(Color.white);
 		y_Button.setForeground(Color.BLACK);
 		y_Panel.add(y_Button);
+		buttons.add(y_Button);
 		//Z Button
 		JPanel z_Panel = new JPanel();
 		z_Panel.setLayout(new BorderLayout());
@@ -591,6 +625,7 @@ public class Hang_Man extends JFrame
 		z_Button.setBackground(Color.white);
 		z_Button.setForeground(Color.BLACK);
 		z_Panel.add(z_Button);
+		buttons.add(z_Button);
 		//Hint Button
 		JPanel Hint_Panel = new JPanel();
 		Hint_Panel.setLayout(new BorderLayout());
@@ -616,7 +651,10 @@ public class Hang_Man extends JFrame
 		SimpleAttributeSet center = new SimpleAttributeSet();
 		word_entry_Box.setCharacterAttributes(center, true);
 		StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
-		word_entry_Box.setText("_ _ _ _ _ _ _ _ _ _ _ _");  
+		word_entry_Box.setText("");
+		for (String s : game.getGuessWord()) {
+			word_entry_Box.setText(word_entry_Box.getText() + s + " ");
+		}
 		StyledDocument word_entry_Doc = word_entry_Box.getStyledDocument(); 
 		word_entry_Doc.setParagraphAttributes(0, word_entry_Doc.getLength(), center, false);
 		word_entry_box_Textfield.add(word_entry_Box);
@@ -874,116 +912,36 @@ public class Hang_Man extends JFrame
 		});
 		//end of Help Button Action Listener 
 
-		//Keyboard action listeners 
-		a_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		b_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		c_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		d_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		e_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		f_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		g_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		h_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		i_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		j_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		k_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		l_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		m_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		n_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		o_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		p_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		q_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		r_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		s_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		t_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		u_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		v_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		w_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		x_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		y_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		z_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		Hint_Button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		//End of Keyboard action listeners 
+		// Efficient way of adding listener to all the buttons, due to them needing to fulfill the same requirements.
+		// Only difference is the guess input.
+		for (JButton b :  buttons) {
+			b.addActionListener(new ActionListener() {
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					boolean correct = game.guess(b.getText());
+					if (correct) {
+						word_entry_Box.setText("");
+						for (String s : game.getGuessWord()) {
+							word_entry_Box.setText(word_entry_Box.getText() + s + " ");
+						}
+						if (game.getWinState()) {
+							JOptionPane.showMessageDialog(null, "The game has ended. Thank you for playing!");
+							int option = JOptionPane.showConfirmDialog(null, "Would you like to play again?");
+							if (option == JOptionPane.YES_OPTION) {
+								int choice = (int)(Math.random() * ((words.length) + 1));
+								game.reset(words[choice]);
+								word_entry_Box.setText("");
+								for (String s : game.getGuessWord()) {
+									word_entry_Box.setText(word_entry_Box.getText() + s + " ");
+								}
+							} else {
+								System.exit(0);
+							}
+						}
+					}
+				}
+			});
+		}
 
 
 		//Frame event listeners, general precautions for the user
