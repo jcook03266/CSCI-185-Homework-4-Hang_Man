@@ -816,6 +816,7 @@ public class Hang_Man extends JFrame
 		Begin_Button.setFont(f2);
 		Begin_Button.setHorizontalAlignment(SwingConstants.LEFT);
 		Begin_Button.setBackground(Color.black);
+		Begin_Button.setForeground(Color.WHITE);
 		Begin_Panel_Button.add(Begin_Button);
 		f.add(Begin_Panel_Button);
 
