@@ -1,11 +1,18 @@
 import java.util.ArrayList;
 
+import javax.swing.JLabel;
+
 /**
  * Hangman Game Logic.
  * @Author Afaq Anwar
  * @ID 1263265
  * @Version 05/13/2020
  */
+
+
+
+
+
 public class Hangman {
     private String gameWord;
     private String[] guessWord;
@@ -14,6 +21,11 @@ public class Hangman {
     private final int guessLimit = 9;
     private boolean hasWon;
 
+    
+    
+ 
+    
+    
     public Hangman(String gameWord) {
         this.gameWord = gameWord.toLowerCase();
         guessWord = new String[gameWord.length()];
@@ -62,6 +74,94 @@ public class Hangman {
                 if (index != -1) {
                     indexes.add(index);
                     index++;
+              
+               if (guessAmount == 1) { 
+            	   
+            	   		System.out.println("         _______");
+                		System.out.println("        |      |     ");
+                		System.out.println("        |      O     ");
+                		System.out.println("        |            ");
+                		System.out.println("        |            ");
+                		System.out.println("       	|            ");
+                		System.out.println("         ____________");
+                		System.out.print("\n");
+                	} else if (guessAmount == 2) { 
+                		System.out.println("         _______");
+                		System.out.println("        |      |     ");
+                		System.out.println("        |      O     ");
+                		System.out.println("        |      |     ");
+                		System.out.println("        |            ");
+                		System.out.println("       	|            ");
+                		System.out.println("         ____________");
+                		System.out.print("\n");
+                	} else if (guessAmount == 3) { 
+                		System.out.println("         _______");
+                		System.out.println("        |      |    ");
+                		System.out.println("        |      O    ");
+                		System.out.println("        |      |    ");
+                		System.out.println("        |      |    ");
+                		System.out.println("       	|           ");
+                		System.out.println("         ____________");
+                		System.out.print("\n");
+                	} else if (guessAmount == 4) { 
+                		System.out.println("         _______");
+                		System.out.println("        |      |     ");
+                		System.out.println("        |      O     ");
+                		System.out.println("        |      |-    ");
+                		System.out.println("        |      |     ");
+                		System.out.println("       	|            ");
+                		System.out.println("         ____________");
+                		System.out.print("\n");
+                	} else if (guessAmount == 5) { 
+                		System.out.println("         _______");
+                		System.out.println("        |      |     ");
+                		System.out.println("        |      O     ");
+                		System.out.println("        |     -|-    ");
+                		System.out.println("        |      |     ");
+                		System.out.println("       	|            ");
+                		System.out.println("         ____________");
+                		System.out.print("\n");
+                	} else if (guessAmount == 6) { 
+                		System.out.println("         _______");
+                		System.out.println("        |      |     ");
+                		System.out.println("        |      O     ");
+                		System.out.println("        |     -|-    ");
+                		System.out.println("        |      |     ");
+                		System.out.println("       	|     /      ");
+                		System.out.println("         ____________");
+                		System.out.print("\n");
+                	} else if (guessAmount == 7) { 
+                		System.out.println("         _______");
+                		System.out.println("        |      |     ");
+                		System.out.println("        |      O     ");
+                		System.out.println("        |     -|-    ");
+                		System.out.println("        |     /|    ");
+                		System.out.println("       	|            ");
+                		System.out.println("         ____________");
+                		System.out.print("\n");
+                	} else if (guessAmount == 8) { 
+                		System.out.println("         _______");
+                		System.out.println("        |      |     ");
+                		System.out.println("        |      O     ");
+                		System.out.println("        |     -|-    ");
+                		System.out.println("        |      |     ");
+                		System.out.println("       	|     /|     ");
+                		System.out.println("       	|          ");
+                		System.out.println("       	|  Help !!        ");
+                		System.out.println("         ____________");
+                		System.out.print("\n");
+                	} else if (guessAmount == 9) { 
+                		System.out.println("         _______");
+                		System.out.println("        |      |     ");
+                		System.out.println("        |      O     ");
+                		System.out.println("        |     -|-    ");
+                		System.out.println("        |      |     ");
+                		System.out.println("       	|     /|     ");
+                		System.out.println("       	|          ");
+                		System.out.println("       	|  Help Now!!        ");
+                		System.out.println("         ____________");
+                		System.out.print("\n");
+                	}
                 }
             }
             for (Integer i : indexes) {
@@ -78,9 +178,12 @@ public class Hangman {
         for (int i = 0; i < gameWord.length(); i++) {
             if (!guessWord[i].equals(gameWord.substring(i, i+1))) {
                 hasWon = false;
+                
+                
             }
         }
     }
+
 
     public void reset(String gameWord) {
         this.gameWord = gameWord.toLowerCase();
