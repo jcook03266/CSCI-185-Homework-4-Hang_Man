@@ -17,8 +17,8 @@ public class Hangman {
     private String gameWord;
     private String[] guessWord;
     private String guess;
-    private int missAmount;
-    private final int guessLimit = 6;
+    private int guessAmount;
+    private final int guessLimit = 9;
     private boolean hasWon;
 
     
@@ -33,14 +33,14 @@ public class Hangman {
             guessWord[i] = "_";
         }
         this.guess = "";
-        this.missAmount = 0;
+        this.guessAmount = 0;
         hasWon = false;
     }
 
     public Hangman() {
         this.gameWord = "";
         this.guess = "";
-        this.missAmount = 0;
+        this.guessAmount = 0;
         hasWon = false;
     }
 
@@ -60,14 +60,13 @@ public class Hangman {
         }
     }
 
-    public int getmissAmount() { return missAmount; }
-
     public boolean getWinState() { return hasWon; }
-    public boolean hasReachedLimit() { return missAmount == guessLimit; }
+    public boolean hasReachedLimit() { return guessAmount == guessLimit; }
 
     public boolean guess(String currentGuess) {
         this.guess = currentGuess.toLowerCase();
-        if (gameWord.contains(guess) && !arrayCheck(guessWord, guess)) {
+        guessAmount++;
+        if (gameWord.contains(guess)) {
             ArrayList<Integer> indexes = new ArrayList<>();
             int index = 0;
             while (index != -1) {
@@ -147,8 +146,8 @@ public class Hangman {
                 		System.out.println("        |     -|-    ");
                 		System.out.println("        |      |     ");
                 		System.out.println("       	|     /|     ");
-                		System.out.println("       	|          ");
-                		System.out.println("       	|  Help !!        ");
+                		System.out.println("       	|             ");
+                		System.out.println("       	|  Help !!    ");
                 		System.out.println("         ____________");
                 		System.out.print("\n");
                 	} else if (guessAmount == 9) { 
@@ -158,8 +157,8 @@ public class Hangman {
                 		System.out.println("        |     -|-    ");
                 		System.out.println("        |      |     ");
                 		System.out.println("       	|     /|     ");
-                		System.out.println("       	|          ");
-                		System.out.println("       	|  Help Now!!        ");
+                		System.out.println("       	|             ");
+                		System.out.println("       	|  Help Now!! ");
                 		System.out.println("         ____________");
                 		System.out.print("\n");
                 	}
@@ -170,17 +169,6 @@ public class Hangman {
             }
             this.checkWin();
             return true;
-        } else {
-            missAmount++;
-        }
-        return false;
-    }
-
-    private boolean arrayCheck(String[] array, String substring) {
-        for (String s : array) {
-            if (s.equalsIgnoreCase(substring)) {
-                return true;
-            }
         }
         return false;
     }
@@ -201,6 +189,6 @@ public class Hangman {
         this.gameWord = gameWord.toLowerCase();
         this.setGuessWord();
         this.guess = "";
-        this.missAmount = 0;
+        this.guessAmount = 0;
     }
 }
