@@ -817,9 +817,20 @@ public class Hang_Man extends JFrame
 		Begin_Button.setFont(f2);
 		Begin_Button.setHorizontalAlignment(SwingConstants.LEFT);
 		Begin_Button.setBackground(Color.black);
-		Begin_Button.setForeground(Color.WHITE);
 		Begin_Panel_Button.add(Begin_Button);
 		f.add(Begin_Panel_Button);
+		
+		//close button
+		JPanel Close_Panel_Button = new JPanel();
+		Close_Panel_Button.setLayout(new BorderLayout());
+		Close_Panel_Button.setBounds(470,500,130,40);
+		Close_Panel_Button.setBackground(Color.BLACK);
+		JButton Close_Button = new JButton("CLOSE GAME");
+		Close_Button.setFont(f2);
+		Close_Button.setHorizontalAlignment(SwingConstants.LEFT);
+		Close_Button.setBackground(Color.black);
+		Close_Panel_Button.add(Close_Button);
+		f.add(Close_Panel_Button);
 
 		//The Canvas //Our drawing surface of wordChoice
 		Canvas Canvas1 = new Canvas(){
@@ -862,12 +873,23 @@ public class Hang_Man extends JFrame
 				word_entry_box_Middle.setVisible(true);
 				word_entry_box_Outside.setVisible(true);
 				Begin_Panel_Button.setVisible(false);
+				Close_Panel_Button.setVisible(false);
+
 
 				Graphics g = Canvas1.getGraphics();
 				g.drawImage(gameImages.get(0), 0, 0, Canvas1);
 				paintComponent(g);
 			}
 		});
+		
+				Close_Button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+
+			}});
+		
+		
+		
 		//File Drop Down Menu Action Listeners
 		//Expands the drop down menu by deploying the grid panel containing all of the secondary buttons after the first button is consequently pressed
 		File.addActionListener(new ActionListener() {
