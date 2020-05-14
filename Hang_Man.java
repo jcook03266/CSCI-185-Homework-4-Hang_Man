@@ -1,3 +1,4 @@
+import javax.imageio.ImageIO;
 import javax.swing.border.Border;
 import javax.swing.text.Document;
 import javax.swing.text.SimpleAttributeSet;
@@ -9,6 +10,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
 /*Written by Justin, Brenno, Afaq
@@ -33,7 +35,8 @@ public class Hang_Man extends JFrame
 	//end of instance variable declarations
 
 	private Hangman game = new Hangman();
-	int wordChoice;
+	private int wordChoice;
+	private ArrayList<BufferedImage> gameImages = new ArrayList<>();
 
 	public Hang_Man(){
 		// List of words.
@@ -42,6 +45,17 @@ public class Hang_Man extends JFrame
 		wordChoice = (int)(Math.random() * ((words.length - 1) + 1));
 		game.setGameWord(words[wordChoice]);
 		game.setGuessWord();
+
+		try {
+			BufferedImage base = ImageIO.read(new File("Pictures/base.png"));
+			gameImages.add(base);
+			for (int i = 1; i <= 6; i++) {
+				BufferedImage image = ImageIO.read(new File("Pictures/" + i + ".png"));
+				gameImages.add(image);
+			}
+		} catch (IOException e) {
+			System.out.println("Error loading images");
+		}
 		//New frame is enumerated
 		f = new JFrame();
 
@@ -808,8 +822,8 @@ public class Hang_Man extends JFrame
 
 		//The Canvas //Our drawing surface of wordChoice
 		Canvas Canvas1 = new Canvas(){
-			public void paint(Graphics g)
-			{
+			public void paint(Graphics g) {
+				g.drawImage(gameImages.get(0), 0, 0, this);
 			}
 		};
 		Canvas1.setBounds(0,0,975,845);
@@ -943,10 +957,15 @@ public class Hang_Man extends JFrame
 								for (String s : game.getGuessWord()) {
 									word_entry_Box.setText(word_entry_Box.getText() + s + " ");
 								}
+								Graphics g = Canvas1.getGraphics();
+								g.drawImage(gameImages.get(game.getmissAmount()), 0, 0, Canvas1);
 							} else {
 								System.exit(0);
 							}
 						}
+					} else {
+						Graphics g = Canvas1.getGraphics();
+						g.drawImage(gameImages.get(game.getmissAmount()), 0, 0, Canvas1);
 					}
 					if (game.hasReachedLimit()) {
 						JOptionPane.showMessageDialog(null, "The game has ended. You Lost. Thank you for playing!");
@@ -958,6 +977,8 @@ public class Hang_Man extends JFrame
 							for (String s : game.getGuessWord()) {
 								word_entry_Box.setText(word_entry_Box.getText() + s + " ");
 							}
+							Graphics g = Canvas1.getGraphics();
+							g.drawImage(gameImages.get(game.getmissAmount()), 0, 0, Canvas1);
 						} else {
 							System.exit(0);
 						}

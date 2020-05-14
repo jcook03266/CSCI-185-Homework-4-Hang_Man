@@ -10,8 +10,8 @@ public class Hangman {
     private String gameWord;
     private String[] guessWord;
     private String guess;
-    private int guessAmount;
-    private final int guessLimit = 9;
+    private int missAmount;
+    private final int guessLimit = 6;
     private boolean hasWon;
 
     public Hangman(String gameWord) {
@@ -21,14 +21,14 @@ public class Hangman {
             guessWord[i] = "_";
         }
         this.guess = "";
-        this.guessAmount = 0;
+        this.missAmount = 0;
         hasWon = false;
     }
 
     public Hangman() {
         this.gameWord = "";
         this.guess = "";
-        this.guessAmount = 0;
+        this.missAmount = 0;
         hasWon = false;
     }
 
@@ -48,13 +48,14 @@ public class Hangman {
         }
     }
 
+    public int getmissAmount() { return missAmount; }
+
     public boolean getWinState() { return hasWon; }
-    public boolean hasReachedLimit() { return guessAmount == guessLimit; }
+    public boolean hasReachedLimit() { return missAmount == guessLimit; }
 
     public boolean guess(String currentGuess) {
         this.guess = currentGuess.toLowerCase();
-        guessAmount++;
-        if (gameWord.contains(guess)) {
+        if (gameWord.contains(guess) && !arrayCheck(guessWord, guess)) {
             ArrayList<Integer> indexes = new ArrayList<>();
             int index = 0;
             while (index != -1) {
@@ -69,6 +70,17 @@ public class Hangman {
             }
             this.checkWin();
             return true;
+        } else {
+            missAmount++;
+        }
+        return false;
+    }
+
+    private boolean arrayCheck(String[] array, String substring) {
+        for (String s : array) {
+            if (s.equalsIgnoreCase(substring)) {
+                return true;
+            }
         }
         return false;
     }
@@ -86,6 +98,6 @@ public class Hangman {
         this.gameWord = gameWord.toLowerCase();
         this.setGuessWord();
         this.guess = "";
-        this.guessAmount = 0;
+        this.missAmount = 0;
     }
 }
