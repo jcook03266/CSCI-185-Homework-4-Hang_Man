@@ -975,7 +975,7 @@ public class Hang_Man extends JFrame
 							JOptionPane.showMessageDialog(null, "The game has ended. You Won! Thank you for playing!");
 							int option = JOptionPane.showConfirmDialog(null, "Would you like to play again?");
 							if (option == JOptionPane.YES_OPTION) {
-								wordChoice = (int)(Math.random() * ((words.length) + 1));
+								wordChoice = (int)(Math.random() * ((words.length - 1) + 1));
 								game.reset(words[wordChoice]);
 								word_entry_Box.setText("");
 								for (String s : game.getGuessWord()) {
