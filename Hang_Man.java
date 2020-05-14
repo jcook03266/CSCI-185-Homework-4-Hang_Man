@@ -33,15 +33,16 @@ public class Hang_Man extends JFrame
 	//end of instance variable declarations
 
 	private Hangman game = new Hangman();
+	int wordChoice;
 
 	public Hang_Man(){
 		// List of words.
 		String[] words = {"Banana", "Fox", "Rabbit", "Dog", "Cat", "Hell", "Heaven"};
 		String[] hints = {"Yellow Fruit", "Rhymes with Fox", "White Fluffy Animal", "Mans Best Friend", "Garfield", "The Devil lives", "Some people believe in it, some people don't."};
-		int choice = (int)(Math.random() * ((words.length - 1) + 1));
-		game.setGameWord(words[choice]);
+		wordChoice = (int)(Math.random() * ((words.length - 1) + 1));
+		game.setGameWord(words[wordChoice]);
 		game.setGuessWord();
-		//New frame is enumerated 
+		//New frame is enumerated
 		f = new JFrame();
 
 		//New border styles
@@ -49,7 +50,7 @@ public class Hang_Man extends JFrame
 		Border whiteline = BorderFactory.createLineBorder(Color.white);
 		Border grayline = BorderFactory.createLineBorder(Color.gray);
 
-		//Fonts 
+		//Fonts
 		Font f1 = new Font("Helvetica",Font.PLAIN, 10);
 		Font f2 = new Font("Helvetica",Font.PLAIN, 15);
 		Font f3 = new Font("Helvetica",Font.PLAIN, 20);
@@ -64,7 +65,7 @@ public class Hang_Man extends JFrame
 		//File Drop Down menu Panel
 		JPanel File_Panel_Expansion = new JPanel();
 		File_Panel_Expansion.setLayout(new GridLayout(4, 1));
-		File_Panel_Expansion.setBounds(50,30,120,120); 
+		File_Panel_Expansion.setBounds(50,30,120,120);
 		File_Panel_Expansion.setBackground(Color.CYAN);
 		File_Panel_Expansion.setBorder(whiteline);
 		File_Panel_Expansion.setVisible(false);
@@ -123,7 +124,7 @@ public class Hang_Man extends JFrame
 		//Mini Side Panel 3 Subset 3
 		JPanel Mini_Side_Panel3_Subset3 = new JPanel();
 		Mini_Side_Panel3_Subset3.setLayout(new BorderLayout());
-		Mini_Side_Panel3_Subset3.setBounds(1240,660,20,15); 
+		Mini_Side_Panel3_Subset3.setBounds(1240,660,20,15);
 		Mini_Side_Panel3_Subset3.setBorder(blackline);
 		Mini_Side_Panel3_Subset3.setBackground(Color.GRAY);
 		f.add(Mini_Side_Panel3_Subset3);
@@ -131,7 +132,7 @@ public class Hang_Man extends JFrame
 		//Mini Side Panel 3 Subset 2
 		JPanel Mini_Side_Panel3_Subset2 = new JPanel();
 		Mini_Side_Panel3_Subset2.setLayout(new BorderLayout());
-		Mini_Side_Panel3_Subset2.setBounds(1140,655,100,20); 
+		Mini_Side_Panel3_Subset2.setBounds(1140,655,100,20);
 		Mini_Side_Panel3_Subset2.setBorder(blackline);
 		Mini_Side_Panel3_Subset2.setBackground(Color.LIGHT_GRAY);
 		f.add(Mini_Side_Panel3_Subset2);
@@ -148,7 +149,7 @@ public class Hang_Man extends JFrame
 		//Mini Side Panel 3.5 //The event log //Write to the textarea to display the triggered events for the User
 		JPanel Mini_Side_Panel3_5 = new JPanel();
 		Mini_Side_Panel3_5.setLayout(new BorderLayout());
-		Mini_Side_Panel3_5.setBounds(1050,685,200,230); 
+		Mini_Side_Panel3_5.setBounds(1050,685,200,230);
 		Mini_Side_Panel3_5.setBorder(blackline);
 		Mini_Side_Panel3_5.setBackground(Color.DARK_GRAY);
 		JTextArea MSP3_5 = new JTextArea();
@@ -163,7 +164,7 @@ public class Hang_Man extends JFrame
 		//Mini Side Panel 3
 		JPanel Mini_Side_Panel3 = new JPanel();
 		Mini_Side_Panel3.setLayout(new BorderLayout());
-		Mini_Side_Panel3.setBounds(1040,675,220,250); 
+		Mini_Side_Panel3.setBounds(1040,675,220,250);
 		Mini_Side_Panel3.setBorder(blackline);
 		Mini_Side_Panel3.setBackground(Color.GRAY);
 		f.add(Mini_Side_Panel3);
@@ -171,7 +172,7 @@ public class Hang_Man extends JFrame
 		//Mini Side Panel 2 Subset 3
 		JPanel Mini_Side_Panel2_Subset3 = new JPanel();
 		Mini_Side_Panel2_Subset3.setLayout(new BorderLayout());
-		Mini_Side_Panel2_Subset3.setBounds(1240,280,20,15); 
+		Mini_Side_Panel2_Subset3.setBounds(1240,280,20,15);
 		Mini_Side_Panel2_Subset3.setBorder(blackline);
 		Mini_Side_Panel2_Subset3.setBackground(Color.GRAY);
 		f.add(Mini_Side_Panel2_Subset3);
@@ -179,7 +180,7 @@ public class Hang_Man extends JFrame
 		//Mini Side Panel 2 Subset 2
 		JPanel Mini_Side_Panel2_Subset2 = new JPanel();
 		Mini_Side_Panel2_Subset2.setLayout(new BorderLayout());
-		Mini_Side_Panel2_Subset2.setBounds(1140,275,100,20); 
+		Mini_Side_Panel2_Subset2.setBounds(1140,275,100,20);
 		Mini_Side_Panel2_Subset2.setBorder(blackline);
 		Mini_Side_Panel2_Subset2.setBackground(Color.LIGHT_GRAY);
 		f.add(Mini_Side_Panel2_Subset2);
@@ -193,18 +194,18 @@ public class Hang_Man extends JFrame
 		Mini_Side_Panel2_Subset1.add(new JLabel("<html><font size='3.5'color=white> JLabel Here </font></html>"));
 		f.add(Mini_Side_Panel2_Subset1);
 
-		//Mini Side Panel 2.5 
+		//Mini Side Panel 2.5
 		JPanel Mini_Side_Panel2_5 = new JPanel();
 		Mini_Side_Panel2_5.setLayout(new GridLayout(2, 2));
-		Mini_Side_Panel2_5.setBounds(1050,305,200,330); 
+		Mini_Side_Panel2_5.setBounds(1050,305,200,330);
 		Mini_Side_Panel2_5.setBorder(blackline);
 		Mini_Side_Panel2_5.setBackground(Color.DARK_GRAY);
 		f.add(Mini_Side_Panel2_5);
 
-		//Mini Side Panel 2 
+		//Mini Side Panel 2
 		JPanel Mini_Side_Panel2 = new JPanel();
 		Mini_Side_Panel2.setLayout(new BorderLayout());
-		Mini_Side_Panel2.setBounds(1040,295,220,350); 
+		Mini_Side_Panel2.setBounds(1040,295,220,350);
 		Mini_Side_Panel2.setBorder(blackline);
 		Mini_Side_Panel2.setBackground(Color.GRAY);
 		f.add(Mini_Side_Panel2);
@@ -212,7 +213,7 @@ public class Hang_Man extends JFrame
 		//Mini Side Panel 1 Subset 3
 		JPanel Mini_Side_Panel1_Subset3 = new JPanel();
 		Mini_Side_Panel1_Subset3.setLayout(new BorderLayout());
-		Mini_Side_Panel1_Subset3.setBounds(1240,30,20,15); 
+		Mini_Side_Panel1_Subset3.setBounds(1240,30,20,15);
 		Mini_Side_Panel1_Subset3.setBorder(blackline);
 		Mini_Side_Panel1_Subset3.setBackground(Color.GRAY);
 		f.add(Mini_Side_Panel1_Subset3);
@@ -220,7 +221,7 @@ public class Hang_Man extends JFrame
 		//Mini Side Panel 1 Subset 2
 		JPanel Mini_Side_Panel1_Subset2 = new JPanel();
 		Mini_Side_Panel1_Subset2.setLayout(new BorderLayout());
-		Mini_Side_Panel1_Subset2.setBounds(1140,25,100,20); 
+		Mini_Side_Panel1_Subset2.setBounds(1140,25,100,20);
 		Mini_Side_Panel1_Subset2.setBorder(blackline);
 		Mini_Side_Panel1_Subset2.setBackground(Color.LIGHT_GRAY);
 		f.add(Mini_Side_Panel1_Subset2);
@@ -228,24 +229,24 @@ public class Hang_Man extends JFrame
 		//Mini Side Panel 1 Subset 1
 		JPanel Mini_Side_Panel1_Subset1 = new JPanel();
 		Mini_Side_Panel1_Subset1.setLayout(new BorderLayout());
-		Mini_Side_Panel1_Subset1.setBounds(1040,20,100,25); 
+		Mini_Side_Panel1_Subset1.setBounds(1040,20,100,25);
 		Mini_Side_Panel1_Subset1.setBorder(blackline);
 		Mini_Side_Panel1_Subset1.setBackground(Color.DARK_GRAY);
 		Mini_Side_Panel1_Subset1.add(new JLabel("<html><font size='3.5'color=white> JLabel Here </font></html>"));
 		f.add(Mini_Side_Panel1_Subset1);
 
-		//Mini Side Panel 1.5 
+		//Mini Side Panel 1.5
 		JPanel Mini_Side_Panel1_5 = new JPanel();
 		Mini_Side_Panel1_5.setLayout(new GridLayout(10, 2));
-		Mini_Side_Panel1_5.setBounds(1050,55,200,200); 
+		Mini_Side_Panel1_5.setBounds(1050,55,200,200);
 		Mini_Side_Panel1_5.setBorder(blackline);
 		Mini_Side_Panel1_5.setBackground(Color.DARK_GRAY);
 		f.add(Mini_Side_Panel1_5);
 
-		//Mini Side Panel 1 
+		//Mini Side Panel 1
 		JPanel Mini_Side_Panel1 = new JPanel();
 		Mini_Side_Panel1.setLayout(new BorderLayout());
-		Mini_Side_Panel1.setBounds(1040,45,220,220); 
+		Mini_Side_Panel1.setBounds(1040,45,220,220);
 		Mini_Side_Panel1.setBorder(blackline);
 		Mini_Side_Panel1.setBackground(Color.GRAY);
 		f.add(Mini_Side_Panel1);
@@ -253,7 +254,7 @@ public class Hang_Man extends JFrame
 		//Side Panel 1
 		JPanel Side_Panel1 = new JPanel();
 		Side_Panel1.setLayout(new BorderLayout());
-		Side_Panel1.setBounds(1030,15,250,940); 
+		Side_Panel1.setBounds(1030,15,250,940);
 		Side_Panel1.setBorder(blackline);
 		Side_Panel1.setBackground(Color.DARK_GRAY);
 		f.add(Side_Panel1);
@@ -261,7 +262,7 @@ public class Hang_Man extends JFrame
 		//Window Padding 1
 		JPanel Window_Padding1 = new JPanel();
 		Window_Padding1.setLayout(new BorderLayout());
-		Window_Padding1.setBounds(1040,30,220,900); 
+		Window_Padding1.setBounds(1040,30,220,900);
 		Window_Padding1.setBorder(blackline);
 		Window_Padding1.setBackground(Color.GRAY);
 		f.add(Window_Padding1);
@@ -269,25 +270,25 @@ public class Hang_Man extends JFrame
 		//Left Side panel1
 		JPanel Left_Side_Panel1 = new JPanel();
 		Left_Side_Panel1.setLayout(new BorderLayout());
-		Left_Side_Panel1.setBounds(0,30,50,950); 
+		Left_Side_Panel1.setBounds(0,30,50,950);
 		Left_Side_Panel1.setBorder(blackline);
 		Left_Side_Panel1.setBackground(Color.DARK_GRAY);
 		f.add(Left_Side_Panel1);
 
-		//Page Header 2 Readout Console 
+		//Page Header 2 Readout Console
 		JTextArea Page_Readout_Console = new JTextArea();
 		Page_Readout_Console.setLayout(new BorderLayout());
-		Page_Readout_Console.setBounds(140,33,860,18); 
+		Page_Readout_Console.setBounds(140,33,860,18);
 		Page_Readout_Console.setBorder(grayline);
 		Page_Readout_Console.setFont(f2);
 		Page_Readout_Console.setEditable(false);
 		Page_Readout_Console.setBackground(Color.WHITE);
 		f.add(Page_Readout_Console);
 
-		//Page Header 2 Readout Console subset 
+		//Page Header 2 Readout Console subset
 		JTextArea Page_Readout_Console_Label = new JTextArea();
 		Page_Readout_Console_Label.setLayout(new BorderLayout());
-		Page_Readout_Console_Label.setBounds(70,33,70,18); 
+		Page_Readout_Console_Label.setBounds(70,33,70,18);
 		Page_Readout_Console_Label.setBorder(grayline);
 		Page_Readout_Console_Label.setFont(f2);
 		Page_Readout_Console_Label.setText("\\\\Console:");
@@ -295,10 +296,10 @@ public class Hang_Man extends JFrame
 		Page_Readout_Console_Label.setBackground(Color.WHITE);
 		f.add(Page_Readout_Console_Label);
 
-		//Page Header 2 Readout Console subset 2 
+		//Page Header 2 Readout Console subset 2
 		JTextArea Page_Readout_Console_Label2 = new JTextArea();
 		Page_Readout_Console_Label2.setLayout(new BorderLayout());
-		Page_Readout_Console_Label2.setBounds(1000,33,30,18); 
+		Page_Readout_Console_Label2.setBounds(1000,33,30,18);
 		Page_Readout_Console_Label2.setBorder(grayline);
 		Page_Readout_Console_Label2.setFont(f2);
 		Page_Readout_Console_Label2.setText(":\\\\");
@@ -309,31 +310,31 @@ public class Hang_Man extends JFrame
 		//Page Header 2 Inside Panel
 		JPanel Page_Header2_Inside = new JPanel();
 		Page_Header2_Inside.setLayout(new BorderLayout());
-		Page_Header2_Inside.setBounds(60,30,1015,35); 
+		Page_Header2_Inside.setBounds(60,30,1015,35);
 		Page_Header2_Inside.setBorder(blackline);
 		Page_Header2_Inside.setBackground(Color.DARK_GRAY);
 		f.add(Page_Header2_Inside);
 
-		//Page Header 2  
+		//Page Header 2
 		JPanel Page_Header2 = new JPanel();
 		Page_Header2.setLayout(new BorderLayout());
-		Page_Header2.setBounds(50,30,1005,40); 
+		Page_Header2.setBounds(50,30,1005,40);
 		Page_Header2.setBorder(blackline);
 		Page_Header2.setBackground(Color.BLACK);
 		f.add(Page_Header2);
 
-		//Page footer 2 subset  
+		//Page footer 2 subset
 		JPanel Page_Footer2_subset = new JPanel();
 		Page_Footer2_subset.setLayout(new BorderLayout());
-		Page_Footer2_subset.setBounds(1035,960,230,15); 
+		Page_Footer2_subset.setBounds(1035,960,230,15);
 		Page_Footer2_subset.setBorder(blackline);
 		Page_Footer2_subset.setBackground(Color.DARK_GRAY);
 		f.add(Page_Footer2_subset);
 
-		//Page footer 2  
+		//Page footer 2
 		JPanel Page_Footer2 = new JPanel();
 		Page_Footer2.setLayout(new BorderLayout());
-		Page_Footer2.setBounds(1030,950,245,60); 
+		Page_Footer2.setBounds(1030,950,245,60);
 		Page_Footer2.setBorder(blackline);
 		Page_Footer2.setBackground(Color.DARK_GRAY);
 		f.add(Page_Footer2);
@@ -637,18 +638,25 @@ public class Hang_Man extends JFrame
 		Hint_Button.setBackground(Color.white);
 		Hint_Button.setForeground(Color.BLACK);
 		Hint_Panel.add(Hint_Button);
+		Hint_Button.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// The hints array works in parallel with the words array, thus the wordChoice option can be used.
+				JOptionPane.showMessageDialog(null, hints[wordChoice]);
+			}
+		});
 		//End of Key Buttons
 		//Keyboard Panels////////////////////////////////////////////////////////////////////////////////////////////
 		//Game Word Entry Box [Inside]
 		JPanel word_entry_box_Textfield= new JPanel();
 		word_entry_box_Textfield.setLayout(new BorderLayout());
-		word_entry_box_Textfield.setBounds(200,645,680,30); 
+		word_entry_box_Textfield.setBounds(200,645,680,30);
 		word_entry_box_Textfield.setBorder(whiteline);
 		word_entry_box_Textfield.setBackground(Color.WHITE);
 		word_entry_box_Textfield.setVisible(false);
 		f.add(word_entry_box_Textfield);
 
-		JTextPane word_entry_Box = new JTextPane();  
+		JTextPane word_entry_Box = new JTextPane();
 		SimpleAttributeSet center = new SimpleAttributeSet();
 		word_entry_Box.setCharacterAttributes(center, true);
 		StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
@@ -656,7 +664,7 @@ public class Hang_Man extends JFrame
 		for (String s : game.getGuessWord()) {
 			word_entry_Box.setText(word_entry_Box.getText() + s + " ");
 		}
-		StyledDocument word_entry_Doc = word_entry_Box.getStyledDocument(); 
+		StyledDocument word_entry_Doc = word_entry_Box.getStyledDocument();
 		word_entry_Doc.setParagraphAttributes(0, word_entry_Doc.getLength(), center, false);
 		word_entry_box_Textfield.add(word_entry_Box);
 		word_entry_Box.setFont(f3);
@@ -665,7 +673,7 @@ public class Hang_Man extends JFrame
 		//Game Word Entry Box [Inside]
 		JPanel word_entry_box_Inside= new JPanel();
 		word_entry_box_Inside.setLayout(new BorderLayout());
-		word_entry_box_Inside.setBounds(190,640,700,40); 
+		word_entry_box_Inside.setBounds(190,640,700,40);
 		word_entry_box_Inside.setBorder(blackline);
 		word_entry_box_Inside.setBackground(Color.WHITE);
 		word_entry_box_Inside.setVisible(false);
@@ -674,7 +682,7 @@ public class Hang_Man extends JFrame
 		//Game Word Entry Box [Middle]
 		JPanel word_entry_box_Middle= new JPanel();
 		word_entry_box_Middle.setLayout(new BorderLayout());
-		word_entry_box_Middle.setBounds(180,630,720,60); 
+		word_entry_box_Middle.setBounds(180,630,720,60);
 		word_entry_box_Middle.setBorder(blackline);
 		word_entry_box_Middle.setBackground(Color.CYAN);
 		word_entry_box_Middle.setVisible(false);
@@ -683,17 +691,17 @@ public class Hang_Man extends JFrame
 		//Game Word Entry Box [outside]
 		JPanel word_entry_box_Outside= new JPanel();
 		word_entry_box_Outside.setLayout(new BorderLayout());
-		word_entry_box_Outside.setBounds(170,620,740,80); 
+		word_entry_box_Outside.setBounds(170,620,740,80);
 		word_entry_box_Outside.setBorder(blackline);
 		word_entry_box_Outside.setBackground(Color.DARK_GRAY);
 		word_entry_box_Outside.setVisible(false);
 		f.add(word_entry_box_Outside);
-		//End 
+		//End
 
 		//Game keyboard Area Padding [Inside]
 		JPanel Page_Footer_subset2 = new JPanel();
 		Page_Footer_subset2.setLayout(new GridLayout(3, 10));
-		Page_Footer_subset2.setBounds(70,730,940,230); 
+		Page_Footer_subset2.setBounds(70,730,940,230);
 		Page_Footer_subset2.setBorder(blackline);
 		Page_Footer_subset2.setBackground(Color.WHITE);
 		Page_Footer_subset2.setVisible(false);
@@ -731,7 +739,7 @@ public class Hang_Man extends JFrame
 
 		JPanel Page_Footer_subset1 = new JPanel();
 		Page_Footer_subset1.setLayout(new BorderLayout());
-		Page_Footer_subset1.setBounds(60,720,960,250); 
+		Page_Footer_subset1.setBounds(60,720,960,250);
 		Page_Footer_subset1.setBorder(blackline);
 		Page_Footer_subset1.setBackground(Color.CYAN);
 		Page_Footer_subset1.setVisible(false);
@@ -739,7 +747,7 @@ public class Hang_Man extends JFrame
 		//Game keyboard Area Padding [out_side]
 		JPanel Page_Footer1 = new JPanel();
 		Page_Footer1.setLayout(new BorderLayout());
-		Page_Footer1.setBounds(50,700,980,500); 
+		Page_Footer1.setBounds(50,700,980,500);
 		Page_Footer1.setBorder(blackline);
 		Page_Footer1.setBackground(Color.DARK_GRAY);
 		Page_Footer1.setVisible(false);
@@ -749,7 +757,7 @@ public class Hang_Man extends JFrame
 		//Page Header 1 Help Button
 		JPanel Page_Header1_Help_Button = new JPanel();
 		Page_Header1_Help_Button.setLayout(new BorderLayout());
-		Page_Header1_Help_Button.setBounds(150,10,100,19); 
+		Page_Header1_Help_Button.setBounds(150,10,100,19);
 		Page_Header1_Help_Button.setBackground(Color.GRAY);
 		JButton Help = new JButton("Help");
 		Help.setFont(f2);
@@ -761,34 +769,34 @@ public class Hang_Man extends JFrame
 		//Page Header 1 File Button
 		JPanel Page_Header1_File_Button = new JPanel();
 		Page_Header1_File_Button.setLayout(new BorderLayout());
-		Page_Header1_File_Button.setBounds(50,10,100,19); 
+		Page_Header1_File_Button.setBounds(50,10,100,19);
 		Page_Header1_File_Button.setBackground(Color.GRAY);
 		JButton File = new JButton("File");
 		File.setFont(f2);
 		File.setBackground(Color.cyan);
 		File.setForeground(Color.BLACK);
 		Page_Header1_File_Button.add(File);
-		f.add(Page_Header1_File_Button);        
+		f.add(Page_Header1_File_Button);
 
-		//Page Header 1  
+		//Page Header 1
 		JPanel Page_Header1 = new JPanel();
 		Page_Header1.setLayout(new BorderLayout());
-		Page_Header1.setBounds(5,5,1025,25); 
+		Page_Header1.setBounds(5,5,1025,25);
 		Page_Header1.setBorder(blackline);
 		Page_Header1.setBackground(Color.DARK_GRAY);
 		f.add(Page_Header1);
 
-		//Outer border 
+		//Outer border
 		JPanel Outer_Border_panel = new JPanel ();
 		Outer_Border_panel.setLayout(new BorderLayout());
-		Outer_Border_panel.setBounds(50,70,980,850); 
+		Outer_Border_panel.setBounds(50,70,980,850);
 		Outer_Border_panel.setBorder(blackline);
 		Outer_Border_panel.setBackground(Color.BLACK);
 
-		//Begin button (Opens up the keyboard panels, paints the hang man design and begins the game) 
+		//Begin button (Opens up the keyboard panels, paints the hang man design and begins the game)
 		JPanel Begin_Panel_Button = new JPanel();
 		Begin_Panel_Button.setLayout(new BorderLayout());
-		Begin_Panel_Button.setBounds(470,370,130,40); 
+		Begin_Panel_Button.setBounds(470,370,130,40);
 		Begin_Panel_Button.setBackground(Color.BLACK);
 		JButton Begin_Button = new JButton("START GAME");
 		Begin_Button.setFont(f2);
@@ -798,37 +806,37 @@ public class Hang_Man extends JFrame
 		Begin_Panel_Button.add(Begin_Button);
 		f.add(Begin_Panel_Button);
 
-		//The Canvas //Our drawing surface of choice 
-		Canvas Canvas1 = new Canvas(){ 
-			public void paint(Graphics g) 
-			{ 
-			} 
-		}; 
-		Canvas1.setBounds(0,0,975,845); 
+		//The Canvas //Our drawing surface of wordChoice
+		Canvas Canvas1 = new Canvas(){
+			public void paint(Graphics g)
+			{
+			}
+		};
+		Canvas1.setBounds(0,0,975,845);
 		Canvas1.setBackground(Color.WHITE);
 		Canvas1.setVisible(true);
 		Outer_Border_panel.add(Canvas1);
 		f.add(Outer_Border_panel);
 
-		//Window1 border 
+		//Window1 border
 		JPanel Window1 = new JPanel();
 		Window1.setLayout(new BorderLayout());
-		Window1.setBounds(0,0,1280,1020); 
+		Window1.setBounds(0,0,1280,1020);
 		Window1.setBorder(blackline);
 		Window1.setBackground(Color.DARK_GRAY);
 		f.add(Window1);
 		//end of Panels
 
-		//our frame specifications 
+		//our frame specifications
 		f.setTitle("Hang_Man");//Adds title header that appears at the top of the page
 		f.setSize(1280,1020);//setting the default size of our window to 270 (H) pixels by 260 (V)
 		f.setResizable(false);//Makes it impossible to resize the window, for styling purposes and uniformity of the program in its current state
 		f.setVisible(true);//making the window visible to the use
 
 		//Action listeners
-		//Button Action Listeners 
+		//Button Action Listeners
 		//Begin Button Action Listener
-		//Expands the keyboard Area and starts the game by painting the canvas with the hang man 
+		//Expands the keyboard Area and starts the game by painting the canvas with the hang man
 		Begin_Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Page_Footer_subset2.setVisible(true);
@@ -840,18 +848,18 @@ public class Hang_Man extends JFrame
 				word_entry_box_Outside.setVisible(true);
 				Begin_Panel_Button.setVisible(false);
 
-				Graphics g = Canvas1.getGraphics(); 
+				Graphics g = Canvas1.getGraphics();
 				paintComponent(g);
 			}
 		});
 		//File Drop Down Menu Action Listeners
-		//Expands the drop down menu by deploying the grid panel containing all of the secondary buttons after the first button is consequently pressed 
+		//Expands the drop down menu by deploying the grid panel containing all of the secondary buttons after the first button is consequently pressed
 		File.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(press_amount == 0){
-					File_Panel_Expansion.setVisible(true); press_amount += 1; 
+					File_Panel_Expansion.setVisible(true); press_amount += 1;
 				}else{
-					File_Panel_Expansion.setVisible(false); press_amount = 0; 
+					File_Panel_Expansion.setVisible(false); press_amount = 0;
 				}
 			}
 
@@ -869,22 +877,22 @@ public class Hang_Man extends JFrame
 					Hang_Man HM1 = new Hang_Man();
 				} else if (response == JOptionPane.CLOSED_OPTION) {
 
-				}      
+				}
 			}
 
 		});
 		//Writes the Buffered Image to the user's desktop using the appropriate name chosen by them as well
 		File_Save.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {                    
+			public void actionPerformed(ActionEvent e) {
 				if(File_Panel_Expansion.isVisible() == true){
 					File_Panel_Expansion.setVisible(false);
 					press_amount = 0;
-				}                  
+				}
 			}
 
 		});
 
-		//Resave or save under a different name 
+		//Resave or save under a different name
 		File_Save_As.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
@@ -899,7 +907,7 @@ public class Hang_Man extends JFrame
 		});
 		//End of File Drop Menu Action Listeners
 
-		//Help Button Action Listener, provides a short and decent tutorial about this current piece of software 
+		//Help Button Action Listener, provides a short and decent tutorial about this current piece of software
 		Help.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if(File_Panel_Expansion.isVisible() == true){
@@ -911,7 +919,7 @@ public class Hang_Man extends JFrame
 			}
 
 		});
-		//end of Help Button Action Listener 
+		//end of Help Button Action Listener
 
 		// Efficient way of adding listener to all the buttons, due to them needing to fulfill the same requirements.
 		// Only difference is the guess input.
@@ -929,8 +937,8 @@ public class Hang_Man extends JFrame
 							JOptionPane.showMessageDialog(null, "The game has ended. You Won! Thank you for playing!");
 							int option = JOptionPane.showConfirmDialog(null, "Would you like to play again?");
 							if (option == JOptionPane.YES_OPTION) {
-								int choice = (int)(Math.random() * ((words.length) + 1));
-								game.reset(words[choice]);
+								wordChoice = (int)(Math.random() * ((words.length) + 1));
+								game.reset(words[wordChoice]);
 								word_entry_Box.setText("");
 								for (String s : game.getGuessWord()) {
 									word_entry_Box.setText(word_entry_Box.getText() + s + " ");
@@ -944,8 +952,8 @@ public class Hang_Man extends JFrame
 						JOptionPane.showMessageDialog(null, "The game has ended. You Lost. Thank you for playing!");
 						int option = JOptionPane.showConfirmDialog(null, "Would you like to play again?");
 						if (option == JOptionPane.YES_OPTION) {
-							int choice = (int)(Math.random() * ((words.length) + 1));
-							game.reset(words[choice]);
+							wordChoice = (int)(Math.random() * ((words.length) + 1));
+							game.reset(words[wordChoice]);
 							word_entry_Box.setText("");
 							for (String s : game.getGuessWord()) {
 								word_entry_Box.setText(word_entry_Box.getText() + s + " ");
