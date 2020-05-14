@@ -46,6 +46,7 @@ public class Hang_Man extends JFrame
 		game.setGameWord(words[wordChoice]);
 		game.setGuessWord();
 
+		// Add images to an ArrayList for easier access.
 		try {
 			BufferedImage base = ImageIO.read(new File("Pictures/base.png"));
 			gameImages.add(base);
@@ -823,7 +824,7 @@ public class Hang_Man extends JFrame
 		//The Canvas //Our drawing surface of wordChoice
 		Canvas Canvas1 = new Canvas(){
 			public void paint(Graphics g) {
-				g.drawImage(gameImages.get(0), 0, 0, this);
+
 			}
 		};
 		Canvas1.setBounds(0,0,975,845);
@@ -863,6 +864,7 @@ public class Hang_Man extends JFrame
 				Begin_Panel_Button.setVisible(false);
 
 				Graphics g = Canvas1.getGraphics();
+				g.drawImage(gameImages.get(0), 0, 0, Canvas1);
 				paintComponent(g);
 			}
 		});
